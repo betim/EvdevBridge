@@ -17,7 +17,12 @@ public class Reader {
   }
   
   public Reader(final String evdevDevice) {
-    init(evdevDevice);
+    new Thread() {
+      @Override
+      public void run() {
+        init(evdevDevice);
+      }
+    }.start();
   }
   
   private synchronized void callback(String result) {
