@@ -20,6 +20,8 @@ public class Reader {
     new Thread() {
       @Override
       public void run() {
+        this.setName("READER THREAD");
+        
         init(evdevDevice);
       }
     }.start();

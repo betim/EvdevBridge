@@ -17,15 +17,15 @@ public class Example {
           }
           
           @Override
-          public synchronized boolean isEnabled() {
+          public boolean isEnabled() {
             return enabled;
           }
           
-          private synchronized void enable() {
+          private void enable() {
             enabled = true;
           }
           
-          private synchronized void disable() {
+          private void disable() {
             enabled = false;
           }
         });   
