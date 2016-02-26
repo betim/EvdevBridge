@@ -52,9 +52,11 @@ JNIEXPORT void JNICALL Java_com_mf_Reader_init(JNIEnv *env, jobject obj, jstring
 	printf("%s\n", (result == 0) ? "SUCCESS" : "FAILURE");
 
 	while (1) {
-		if ((rd = read(fevdev, ev, size * 64)) < size)
-			break;
-
+		if ((rd = read(fevdev, ev, size * 64)) < size) {
+			usleep(500000);
+			continue;
+		}
+		
 		if (ev[1].value == 1 && ev[1].type == 1) {
 			if (ev[1].code == 28) {
 				(*env)->CallVoidMethod(env, obj, mid, (*env)->NewStringUTF(env, code));
